@@ -20,12 +20,12 @@
     }
 
     #book {
-      width: 50vw;
-      height: 50vh;
+      width: 60vw;
+      height: 35vh;
       position: absolute;
-      left: 25vw;
-      top: 25vh;
-      perspective: 75vw;
+      left: 20vw;
+      top: 32.5vh;
+      perspective: 90vw;
     }
 
     #book:before {
@@ -56,7 +56,7 @@
       
       font-family: monospace;
       text-align: center;
-      line-height: 50vh;
+      line-height: 35vh;
     }
 
     .front, .back {
@@ -68,7 +68,7 @@
       
       font-family: monospace;
       text-align: center;
-      line-height: 50vh;
+      line-height: 35vh;
       
       opacity: 0;
       transition: opacity .1s linear 1s;
@@ -126,7 +126,7 @@
     #page1 .front {
       font-size: 2vh;
       letter-spacing: 2vh;
-      line-height: 50vh;
+      line-height: 35vh;
       font-weight: 900;
       text-align: right;
       background: radial-gradient(circle at 70% 50%, black 50%, #222 40%);
@@ -492,6 +492,116 @@
     .heart2 { top: 20%; right: 15%; animation-delay: 0.5s; }
     .heart3 { bottom: 15%; left: 20%; animation-delay: 1s; }
     .heart4 { bottom: 25%; right: 10%; animation-delay: 1.5s; }
+
+    /* Mobile Responsive */
+    @media screen and (max-width: 768px) {
+      #book {
+        width: 80vw;
+        height: 30vh;
+        left: 10vw;
+        top: 35vh;
+        perspective: 140vw;
+      }
+
+      .page {
+        line-height: 30vh;
+      }
+
+      .front, .back {
+        line-height: 30vh;
+      }
+
+      .lyric-page {
+        font-size: 1.1em;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      #page1 .front {
+        font-size: 1.5vh;
+        letter-spacing: 1.5vh;
+        line-height: 30vh;
+      }
+
+      #page1 .back {
+        font-size: 1.1em;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      #audio-controls {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 15px;
+      }
+
+      #audio-controls button {
+        padding: 8px 16px;
+        font-size: 0.8em;
+      }
+
+      .photo-page {
+        padding: 15px;
+      }
+
+      .photo-page img {
+        border: 5px solid #fff;
+      }
+
+      .heart {
+        font-size: 15px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      #book {
+        width: 85vw;
+        height: 28vh;
+        left: 7.5vw;
+        top: 36vh;
+      }
+
+      .page {
+        line-height: 28vh;
+      }
+
+      .front, .back {
+        line-height: 28vh;
+      }
+
+      .lyric-page {
+        font-size: 0.95em;
+        padding: 15px;
+        line-height: 1.5;
+      }
+
+      #page1 .front {
+        font-size: 1.3vh;
+        letter-spacing: 1.3vh;
+        line-height: 28vh;
+      }
+
+      #page1 .back {
+        font-size: 0.95em;
+        padding: 15px;
+        line-height: 1.5;
+      }
+
+      #audio-controls {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 12px;
+      }
+
+      #audio-controls button {
+        padding: 6px 14px;
+        font-size: 0.75em;
+      }
+
+      .photo-page {
+        padding: 10px;
+      }
+    }
   </style>
 </head>
 <body>
