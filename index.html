@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasyaaa 💕</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: azure;
+      background-image: linear-gradient(-45deg, #ff6b9d, #c44569, #9b59b6);
+    }
+
+    #book {
+      width: 50vw;
+      height: 50vh;
+      position: absolute;
+      left: 25vw;
+      top: 25vh;
+      perspective: 75vw;
+    }
+
+    #book:before {
+      width: 1%;
+      height: 100%;
+      background: #222;
+      content: '';
+      position: absolute;
+      left: 49%;
+      top: 0;
+      box-shadow: 0px 10px 10px rgba(0,0,0,.75);
+      outline: 1px solid black;
+    }
+
+    .page {
+      width: 50%;
+      height: 100%;
+      background: radial-gradient(circle at 0% 100%, #777, #ddd 70%);
+      outline: 1px solid black;
+      box-shadow: 5px 10px 10px rgba(0,0,0,.15);
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transition: z-index .01s linear 1s, transform 2s linear;
+      transform-origin: 0% 50%;
+      z-index: 5;
+      cursor: pointer;
+      
+      font-family: monospace;
+      text-align: center;
+      line-height: 50vh;
+    }
+
+    .front, .back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      
+      font-family: monospace;
+      text-align: center;
+      line-height: 50vh;
+      
+      opacity: 0;
+      transition: opacity .1s linear 1s;
+    }
+
+    .front {
+      opacity: 1;
+    }
+
+    .back {
+      transform: scaleX(-1);
+    }
+
+    input {
+      visibility: hidden;
+    }
+
+    label {
+      width: 100%;
+      height: 100%;
+      z-index: 99;
+      position: absolute;
+      left: 0;
+      top: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    input:checked + .page {
+      transform: rotateY(-180deg);
+    }
+
+    input:checked + .page .front {
+      opacity: 0;
+    }
+
+    input:checked + .page .back {
+      opacity: 1;
+    }
+
+    #twelve:checked + .page { z-index: 12; }
+    #eleven:checked + .page { z-index: 11; }
+    #ten:checked + .page { z-index: 10; }
+    #nine:checked + .page { z-index: 9; }
+    #eight:checked + .page { z-index: 8; }
+    #seven:checked + .page { z-index: 7; }
+    #six:checked + .page { z-index: 6; }
+    #five:checked + .page { z-index: 5; }
+    #four:checked + .page { z-index: 4; }
+    #three:checked + .page { z-index: 3; }
+    #two:checked + .page { z-index: 2; }
+    #one:checked + .page { z-index: 1; }
+
+    /* Cover Pages Style - TASYA Animation */
+    #page1 .front {
+      font-size: 2vh;
+      letter-spacing: 2vh;
+      line-height: 50vh;
+      font-weight: 900;
+      text-align: right;
+      background: radial-gradient(circle at 70% 50%, black 50%, #222 40%);
+      color: magenta;
+      animation: cover 10s linear infinite;
+    }
+
+    @keyframes cover {
+      20% { color: lime }
+      40% { color: dodgerblue }
+      60% { color: gold }
+      80% { color: cyan }
+    }
+
+    #page1 .back {
+      font-size: 1.6em;
+      color: #2c3e50;
+      text-align: center;
+      line-height: 1.8;
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 40px;
+      background: radial-gradient(circle at 0% 100%, #777, #ddd 70%);
+    }
+
+    #page1 .back::before {
+      content: '♪';
+      display: block;
+      font-size: 1.5em;
+      color: #e74c3c;
+      margin-bottom: 20px;
+    }
+
+    @keyframes a {
+      45% { color: white; }
+      50% { color: #222; }
+      55% { color: white; }
+    }
+
+    #page2 .front {
+      font-size: 25vh;
+      font-family: serif;
+      font-weight: 900;
+      background: dodgerblue;
+      animation: L 10s linear infinite;
+    }
+
+    @keyframes L {
+      50% { color: dodgerblue; background: white; }
+    }
+
+    #page2 .back {
+      font-size: 25vh;
+      font-weight: 100;
+      font-family: sans-serif;
+      text-shadow: 5px 5px 0px white, 7px 7px 0px;
+      background: white;
+      color: tomato;
+      animation: p 5s linear infinite;
+    }
+
+    @keyframes p {
+      50% { text-shadow: 13px 13px 0px white, 16px 16px 0px; }
+    }
+
+    #page3 .front {
+      background: #222;
+      color: lime;
+      font-size: 25vh;
+      font-weight: 900;
+      font-family: serif;
+      overflow: hidden;
+    }
+
+    #page3 .front:before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: radial-gradient(circle, #222 40%, transparent 40%);
+      background-size: .5vh .5vh;
+      background-position: -.5vh;
+      animation: h 15s linear infinite;
+    }
+
+    @keyframes h {
+      100% { background-position: .5vh 0%; }
+    }
+
+    #page3 .front:after {
+      content: 'S';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: -1px;
+      left: -10px;
+      color: #222;
+      text-shadow: -1px 0px lime, -1px -1px lime, -1px 1px lime;
+    }
+
+    #page3 .back {
+      background: #222;
+      color: white;
+      font-size: 25vh;
+      font-weight: 900;
+      font-family: serif;
+      text-shadow: 5px 0px rgba(255,0,0,.5), 10px 0px rgba(255,0,0,.4), 15px 0px rgba(255,0,0,.3), 20px 0px rgba(255,0,0,.2), 25px 0px rgba(255,0,0,.1);
+      overflow: hidden;
+    }
+
+    #page3 .back:before {
+      content: 'A';
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 17vh;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: scaleY(-1);
+      opacity: .25;
+      animation: aa 1s linear infinite;
+    }
+
+    @keyframes aa {
+      50% { left: 5px }
+    }
+
+    #page3 .back:after {
+      content: '';
+      width: 100%;
+      height: 20vh;
+      text-align: center;
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      background: linear-gradient(to top, #222 50%, transparent);
+    }
+
+    #page4 {
+      overflow: hidden;
+      background: white;
+    }
+
+    #page4 .front {
+      width: 25%;
+      height: 20vh;
+      background: gold;
+      position: absolute;
+      top: 15vh;
+      left: 30%;
+      color: transparent;
+      transform: skewY(-10deg) skewX(-10deg);
+      mix-blend-mode: multiply;
+      animation: b 10s linear infinite;
+    }
+
+    @keyframes b {
+      50% { filter: hue-rotate(360deg); }
+    }
+
+    #page4 .front:before {
+      content: '';
+      width: 200%;
+      height: 40%;
+      background: violet;
+      position: absolute;
+      top: 15%;
+      left: -10%;
+      border-radius: 0 50px 50px 0;
+      mix-blend-mode: multiply;
+      transform: skewY(10deg);
+    }
+
+    #page4 .front:after {
+      content: '';
+      width: 200%;
+      height: 40%;
+      background: cyan;
+      position: absolute;
+      top: 55%;
+      left: -10%;
+      border-radius: 0 50px 50px 0;
+      mix-blend-mode: multiply;
+      transform: skewY(10deg);
+    }
+
+    #page4 .back {
+      height: calc(100% + 10px);
+      background: linear-gradient(#ffffff 50%, rgba(255,255,255,0) 0) 0 0,
+        radial-gradient(circle closest-side, #FFFFFF 53%, rgba(255,255,255,0) 0) 0 0,
+        radial-gradient(circle closest-side, #FFFFFF 50%, rgba(255,255,255,0) 0) 55px 0 #48B;
+      background-size: 110px 50vh;
+      background-repeat: repeat-x;
+      color: white;
+      font-size: 25vh;
+      font-weight: 900;
+      font-family: serif;
+      text-shadow: -1px -1px #48B, 1px -1px #48B, 1px 1px #48B, -1px 1px #48B;
+      animation: bob 10s linear infinite;
+    }
+
+    @keyframes bob {
+      25% { top: -10px }
+      50% { top: 0px; }
+      75% { top: -10px; }
+    }
+
+    #page4 .back:before {
+      content: '';
+      position: absolute;
+      top: 25%;
+      left: 40%;
+      background: white;
+      box-shadow: 0 0 2px black;
+      width: 2.5vh;
+      height: 5vh;
+      border-radius: 75% 0 75% 0;
+    }
+
+    #page4 .back:after {
+      content: '';
+      position: absolute;
+      top: 24%;
+      left: 43%;
+      background: radial-gradient(circle at 65% 45%, gray 15%, white 15%);
+      box-shadow: 0 0 2px black;
+      width: 2vh;
+      height: 2vh;
+      border-radius: 75% 75% 0% 75%;
+      transform: rotate(-45deg);
+    }
+
+    #page5 .front {
+      color: gold;
+      font-size: 25vh;
+      font-weight: 900;
+      font-family: serif;
+      background: #222;
+      text-shadow: 24px 24px purple;
+      animation: slide 10s linear infinite;
+    }
+
+    @keyframes slide {
+      25% { text-shadow: -24px 24px purple; }
+      50% { text-shadow: -24px -24px purple; }
+      75% { text-shadow: 24px -24px purple; }
+      100% { text-shadow: 24px 24px purple; }
+    }
+
+    #page5 .back {
+      font-size: 2vh;
+      letter-spacing: 2vh;
+      line-height: 50vh;
+      font-weight: 900;
+      text-align: left;
+      background: radial-gradient(circle at 30% 50%, black 50%, #222 40%);
+      color: magenta;
+      padding-left: 2vh;
+      animation: cover 10s linear infinite;
+    }
+
+    /* Lyric Pages */
+    .lyric-page {
+      font-size: 1.6em;
+      color: #2c3e50;
+      text-align: center;
+      line-height: 1.8;
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 40px;
+    }
+
+    .lyric-page small {
+      font-size: 0.7em;
+      display: block;
+      margin-top: 15px;
+      opacity: 0.8;
+    }
+
+    .lyric-page::before {
+      content: '♪';
+      display: block;
+      font-size: 1.5em;
+      color: #e74c3c;
+      margin-bottom: 20px;
+    }
+
+    /* Photo Pages with Frame */
+    .photo-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .photo-page img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 10px solid #fff;
+      box-shadow: 
+        0 4px 8px rgba(0,0,0,0.3),
+        inset 0 0 20px rgba(0,0,0,0.1);
+      border-radius: 3px;
+    }
+
+    /* Audio Controls */
+    #audio-controls {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 50px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    #audio-controls button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: bold;
+      transition: transform 0.2s;
+    }
+
+    #audio-controls button:hover {
+      transform: scale(1.1);
+    }
+
+    #audio-controls button:active {
+      transform: scale(0.95);
+    }
+
+    .heart {
+      position: fixed;
+      color: #e74c3c;
+      font-size: 20px;
+      animation: float 3s ease-in-out infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .heart1 { top: 10%; left: 10%; animation-delay: 0s; }
+    .heart2 { top: 20%; right: 15%; animation-delay: 0.5s; }
+    .heart3 { bottom: 15%; left: 20%; animation-delay: 1s; }
+    .heart4 { bottom: 25%; right: 10%; animation-delay: 1.5s; }
+  </style>
+</head>
+<body>
+  <!-- Decorative Hearts -->
+  <div class="heart heart1">💕</div>
+  <div class="heart heart2">💖</div>
+  <div class="heart heart3">💗</div>
+  <div class="heart heart4">💝</div>
+
+  <div id="book">
+    <!-- Back Cover -->
+    <input type="checkbox" id="twelve">
+    <div id="page12" class="page">
+      <div class="front photo-page">
+        <img src="https://neoflashtech.sgp1.cdn.digitaloceanspaces.com/aca/tasya-7.JPG" alt="Photo">
+      </div>
+      <div class="back" style="font-size: 2vh; letter-spacing: 2vh; line-height: 50vh; font-weight: 900; text-align: left; background: radial-gradient(circle at 30% 50%, black 50%, #222 40%); color: magenta; padding-left: 2vh; animation: cover 10s linear infinite;">
+        TASYA
+      </div>
+      <label for="twelve"></label>
+    </div>
+
+    <!-- Lyric Page 6 -->
+    <input type="checkbox" id="eleven">
+    <div id="page11" class="page">
+      <div class="front photo-page">
+        <img src="https://neoflashtech.sgp1.cdn.digitaloceanspaces.com/aca/tasya-6.JPG" alt="Photo">
+      </div>
+      <div class="back lyric-page">
+        Kau lebih dari<br>
+        teman berbagi<br>
+        Jadi kekasihku saja<br>
+        <small>(Lebih dari teman<br>jadi kekasihku saja)</small>
+      </div>
+      <label for="eleven"></label>
+    </div>
+
+    <!-- Lyric Page 5 -->
+    <input type="checkbox" id="ten">
+    <div id="page10" class="page">
+      <div class="front photo-page">
+        <img src="https://neoflashtech.sgp1.cdn.digitaloceanspaces.com/aca/tasya-5.JPG" alt="Photo">
+      </div>
+      <div class="back lyric-page">
+        Katakan cinta<br>
+        bila kau cinta<br>
+        Hati ini meminta
+      </div>
+      <label for="ten"></label>
+    </div>
+    
+    <!-- Lyric Page 4 -->
+    <input type="checkbox" id="nine">
+    <div id="page9" class="page">
+      <div class="front photo-page">
+        <img src="https://neoflashtech.sgp1.cdn.digitaloceanspaces.com/aca/tasya-4.JPG" alt="Photo">
+      </div>
+      <div class="back lyric-page">
+        Kita berdua<br>
+        belum punya kekasih<br>
+        Tunggu apa lagi
+      </div>
+      <label for="nine"></label>
+    </div>
+    
+    <!-- Lyric Page 3 -->
+    <input type="checkbox" id="eight">
+    <div id="page8" class="page">
+      <div class="front photo-page">
+        <img src="https://neoflashtech.sgp1.cdn.digitaloceanspaces.com/aca/tasya-3.JPG" alt="Photo">
+      </div>
+      <div class="back lyric-page">
+        Perasaan tak<br>
+        bisa berdusta<br>
+        Bahagia terasa sempurna
+      </div>
+      <label for="eight"></label>
+    </div>
+    
+    <!-- Lyric Page 2 -->
+    <input type="checkbox" id="seven">
+    <div id="page7" class="page">
+      <div class="front photo-page">
+        <img src="https://neoflashtech.sgp1.cdn.digitaloceanspaces.com/aca/tasya-2.JPG" alt="Photo">
+      </div>
+      <div class="back lyric-page">
+        Kita berdua<br>
+        belum punya kekasih<br>
+        Saling mendekati
+      </div>
+      <label for="seven"></label>
+    </div>
+    
+    <!-- Lyric Page 1 -->
+    <input type="checkbox" id="six">
+    <div id="page6" class="page">
+      <div class="front photo-page">
+        <img src="https://neoflashtech.sgp1.cdn.digitaloceanspaces.com/aca/photo1.jpg" alt="Photo">
+      </div>
+      <div class="back lyric-page">
+        Tiba-tiba aku<br>
+        jatuh cinta<br>
+        Diam-diam kau pun juga cinta
+      </div>
+      <label for="six"></label>
+    </div>
+
+    <!-- Cover Page 5 -->
+    <!-- <input type="checkbox" id="five">
+    <div id="page5" class="page">
+      <div class="front">A</div>
+      <div class="back">AYSAТ</div>
+      <label for="five"></label>
+    </div> -->
+    
+    <!-- Cover Page 4 -->
+    <!-- <input type="checkbox" id="four">
+    <div id="page4" class="page">
+      <div class="front">Y</div>
+      <div class="back">S</div>
+      <label for="four"></label>
+    </div> -->
+    
+    <!-- Cover Page 3 -->
+    <!-- <input type="checkbox" id="three">
+    <div id="page3" class="page">
+      <div class="front">S</div>
+      <div class="back">A</div>
+      <label for="three"></label>
+    </div> -->
+    
+    <!-- Cover Page 2 -->
+    <!-- <input type="checkbox" id="two">
+    <div id="page2" class="page">
+      <div class="front">A</div>
+      <div class="back">Y</div>
+      <label for="two"></label>
+    </div> -->
+    
+    <!-- Cover Page 1 -->
+    <input type="checkbox" id="one">
+    <div id="page1" class="page">
+      <div class="front">TASYA</div>
+      <div class="back">
+        Tiba-tiba aku<br>
+        jatuh cinta<br>
+        Diam-diam kau pun juga cinta
+      </div>
+      <label for="one"></label>
+    </div>
+  </div>
+
+  <!-- Audio Controls -->
+  <div id="audio-controls">
+    <button id="playPauseBtn">▶️ Play</button>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="https://neoflashtech.sgp1.cdn.digitaloceanspaces.com/aca/lagu-keysha-jadilah-kekasihku.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Audio Control
+    const audio = document.getElementById('bgMusic');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    let isPlaying = false;
+
+    // Set audio to start at 10 seconds
+    audio.currentTime = 10;
+
+    playPauseBtn.addEventListener('click', function() {
+      if (isPlaying) {
+        audio.pause();
+        playPauseBtn.innerHTML = '▶️ Play';
+        isPlaying = false;
+      } else {
+        audio.play();
+        playPauseBtn.innerHTML = '⏸️ Pause';
+        isPlaying = true;
+      }
+    });
+
+    // Auto play on first interaction
+    document.body.addEventListener('click', function() {
+      if (!isPlaying) {
+        audio.currentTime = 10;
+        audio.play().then(() => {
+          playPauseBtn.innerHTML = '⏸️ Pause';
+          isPlaying = true;
+        }).catch(e => {
+          console.log('Auto-play prevented');
+        });
+      }
+    }, { once: true });
+
+    // Delay clicks while page is turning
+    document.getElementById('book').addEventListener('click', function(e) {
+      const book = this;
+      book.style.pointerEvents = "none";
+      setTimeout(function() {
+        book.style.pointerEvents = "";
+      }, 2000);
+    });
+
+    // Create floating hearts animation
+    function createFloatingHeart() {
+      const heart = document.createElement('div');
+      heart.innerHTML = '💖';
+      heart.style.position = 'fixed';
+      heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+      heart.style.left = Math.random() * 100 + '%';
+      heart.style.bottom = '-50px';
+      heart.style.opacity = '0.5';
+      heart.style.pointerEvents = 'none';
+      heart.style.transition = 'all 4s ease-in-out';
+      heart.style.zIndex = '1';
+      
+      document.body.appendChild(heart);
+      
+      setTimeout(() => {
+        heart.style.bottom = '110vh';
+        heart.style.opacity = '0';
+      }, 100);
+      
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }
+
+    // Generate floating hearts periodically
+    setInterval(createFloatingHeart, 2000);
+  </script>
+</body>
+</html>
